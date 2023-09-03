@@ -4,8 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 const userSessionCheck = require('./middlewares/userSessionCheck');
+const cookieCheck = require('./middlewares/cookieCheck');
 
 var app = express();
 
@@ -25,6 +26,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use(cookieCheck);
 app.use(userSessionCheck);
 app.use('/', indexRouter);
 

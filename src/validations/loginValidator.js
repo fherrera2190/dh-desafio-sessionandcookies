@@ -14,5 +14,5 @@ module.exports = [
             return true
         }).withMessage('Debe elegir un color')
     ,
-    check('age')
+    check('age').optional({checkFalsy:true}).isInt({ min: 1 }).withMessage('Debe ingresar una edad mayor a 0')
 ]
